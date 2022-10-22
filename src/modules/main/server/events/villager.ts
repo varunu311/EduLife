@@ -15,9 +15,6 @@ export class VillagerEvent extends RpgEvent {
         await player.showText('I give you 10 gold.', {
             talkWith: this
         })
-        player.showText('I give you 10ss gold.', {
-            talkWith: this
-        })
         player.gold += 10
     }
 } 
