@@ -1,13 +1,10 @@
-import os                 # os is used to get environment variables IP & PORT
-import secrets
+import os
 import backend
-from flask import session
-from flask import Flask   # Flask is the web app that we will customize
+from flask import Flask
 from flask import render_template, redirect, url_for, request
 
 
-app = Flask(__name__)     # create an app
-app.secret_key = "htx0293klp005007dslzew"
+app = Flask(__name__)
 local_username = ""
 
 @app.route('/')
@@ -24,10 +21,10 @@ def Sign_In():
             return "Login Succesful"
 
         else:
-            return "Login Failed: Password and Username do not match"
+            return "Login Failed: Password And Username Do Not Match"
     else:
         print("Not A Post Request")
-        return "Not A Post Request"
+        return render_template('Login.html')
 
 @app.route('/signup', methods=["POST","GET"])
 @app.route('/register', methods=["POST","GET"])
@@ -37,11 +34,11 @@ def Sign_Up():
         name = request.form["name"]
         password = request.form["password"]
         backend.create_user(username, name, password)
-        return redirect(url_for('user'))
+        return "User Creation Succesful"
 
     else:
         print("Not A Post Request")
-        return "Not A Post Request"
+        return render_template('SignUp.html')
 
 @app.route('/addmoney', methods=["POST","GET"])
 def addmoney():
@@ -89,7 +86,7 @@ def addjob():
     print("Job Was Added")
     return "Job Was Added"
 
-@app.route('/removejob',methods=["POST","GET"])
+@app.route('/removejob')
 def removejob():
     backend.remove_job(local_username)
     print("Job Was Removed")

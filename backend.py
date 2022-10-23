@@ -108,17 +108,3 @@ def add_creditscore(username, amount_increase):
 
 def subtract_creditscore(username, amount_decrease):
     set_creditscore(username, (get_creditscore(username) - amount_decrease))
-
-
-
-#create_user_table()
-#create_user("Varunu311", "Varun Upadhyay", "password101")
-#create_user("Sal007", "Salvatore", "password202")
-#create_user("Forty-Irvine", "Irvine", "password303")
-#create_user("Smirki", "Manav", "password404")
-#login_validation("Varunu311","password101")
-#print("Current Bal:",get_bal("Varunu311"))
-#add_bal("Varunu311", 25000)
-#print("Updated Bal:",get_bal("Varunu311"))
-#subtract_bal("Varunu311", 24000)
-#print("Updated Bal:",get_bal("Varunu311"))
