@@ -5,7 +5,7 @@ from flask import render_template, redirect, url_for, request
 
 
 app = Flask(__name__)
-local_username = ""
+app1 = Flask(__name__)
 
 @app.route('/')
 def home():
@@ -17,8 +17,7 @@ def Sign_In():
         username = request.form["username"]
         password = request.form["password"]
         if backend.login_validation(username, password) == True:
-            local_username = username
-            return "Login Succesful"
+            return redirect(render_template("index.html"))
 
         else:
             return "Login Failed: Password And Username Do Not Match"
@@ -43,8 +42,9 @@ def Sign_Up():
 @app.route('/addmoney', methods=["POST","GET"])
 def addmoney():
     if request.method == "POST":
+        username = request.form["username"]
         amount = request.form["amount"]
-        backend.add_bal(local_username, amount)
+        backend.add_bal(username, amount)
         print(amount,"Added to Balance")
     else:
         print("Not A Post Request")
@@ -53,8 +53,9 @@ def addmoney():
 @app.route('/subtractmoney', methods=["POST","GET"])
 def submoney():
     if request.method == "POST":
+        username = request.form["username"]
         amount = request.form["amount"]
-        backend.subtract_bal(local_username, amount)
+        backend.subtract_bal(username, amount)
         print(amount, "Subtracted From Balance")
     else:
         print("Not A Post Request")
@@ -63,8 +64,9 @@ def submoney():
 @app.route('/addloan', methods=["POST","GET"])
 def addloan():
     if request.method == "POST":
+        username = request.form["username"]
         amount = request.form["amount"]
-        backend.add_loan(local_username, amount)
+        backend.add_loan(username, amount)
         print(amount, "Added to Loan")
     else:
         print("Not A Post Request")
@@ -73,8 +75,9 @@ def addloan():
 @app.route('/subtractloan', methods=["POST","GET"])
 def subloan():
     if request.method == "POST":
+        username = request.form["username"]
         amount = request.form["amount"]
-        backend.subtract_loan(local_username, amount)
+        backend.subtract_loan(username, amount)
         print(amount, "Subtracted From Loan")
     else:
         print("Not A Post Request")
@@ -82,21 +85,24 @@ def subloan():
 
 @app.route('/addjob')
 def addjob():
-    backend.add_job(local_username)
+    username = request.form["username"]
+    backend.add_job(username)
     print("Job Was Added")
     return "Job Was Added"
 
 @app.route('/removejob')
 def removejob():
-    backend.remove_job(local_username)
+    username = request.form["username"]
+    backend.remove_job(username)
     print("Job Was Removed")
     return "Job Was Removed"
 
 @app.route('/addcredit', methods=["POST","GET"])
 def addcredit():
     if request.method == "POST":
+        username = request.form["username"]
         amount = request.form["amount"]
-        backend.add_creditscore(local_username, amount)
+        backend.add_creditscore(username, amount)
         print(amount, "Added to Credit Score")
     else:
         print("Not A Post Request")
@@ -105,8 +111,9 @@ def addcredit():
 @app.route('/subtractcredit', methods=["POST","GET"])
 def subcredit():
     if request.method == "POST":
+        username = request.form["username"]
         amount = request.form["amount"]
-        backend.subtract_creditscore(local_username, amount)
+        backend.subtract_creditscore(username, amount)
         print(amount, "Subtracted Credit Score")
     else:
         print("Not A Post Request")
