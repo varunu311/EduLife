@@ -2,7 +2,6 @@ import { RpgServer, RpgModule } from '@rpgjs/server'
 import world from './maps/tmx/myworld.world'
 import { SampleMap } from './maps/samplemap'
 import { player } from './player'
-import defaultGui from '@rpgjs/default-gui' 
 
 @RpgModule<RpgServer>({ 
     player,
