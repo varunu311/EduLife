@@ -13,6 +13,11 @@
             "width": 640,
             "x": -160,
             "y": 480
+        },
+        {
+            "fileName": "simplemap3.tmx",
+            "height": 640,
+            "width": 640
         }
     ],
     "onlyShowAdjacentMaps": false,
