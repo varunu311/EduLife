@@ -12,10 +12,10 @@ export class VillagerEvent extends RpgEvent {
         this.setGraphic('female132')
     }
     async onAction(player: RpgPlayer) {
-        await player.showText('I give you 10 gold.', {
+        await player.showText('Hey! How are you today? (Press SPACE to continue)', {
             talkWith: this
         })
-        player.showText('I give you 10ss gold.', {
+        player.showText('I give you 10 gold.', {
             talkWith: this
         })
         player.gold += 10
