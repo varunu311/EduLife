@@ -1,7 +1,7 @@
 import os
 import psycopg2
 
-DATABASE_URL = "postgresql://varun:EKoZ-DySh65JeT4ND_Qa-A@free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/EduLife?sslmode=verify-full&options=--cluster%3Dwood-bee-6064"
+DATABASE_URL = "postgresql://varun:6G7gs8aPIqCVvHPL_JxH7g@free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dcloth-digger-6085"
 conn = psycopg2.connect(DATABASE_URL)
 cur = conn.cursor()
 
@@ -109,16 +109,4 @@ def add_creditscore(username, amount_increase):
 def subtract_creditscore(username, amount_decrease):
     set_creditscore(username, (get_creditscore(username) - amount_decrease))
 
-
-
-#create_user_table()
-#create_user("Varunu311", "Varun Upadhyay", "password101")
-#create_user("Sal007", "Salvatore", "password202")
-#create_user("Forty-Irvine", "Irvine", "password303")
-#create_user("Smirki", "Manav", "password404")
-#login_validation("Varunu311","password101")
-#print("Current Bal:",get_bal("Varunu311"))
-#add_bal("Varunu311", 25000)
-#print("Updated Bal:",get_bal("Varunu311"))
-#subtract_bal("Varunu311", 24000)
-#print("Updated Bal:",get_bal("Varunu311"))
+create_user_table();
