@@ -10,6 +10,10 @@
         </div>
         
     </div>
+
+    <div class="backpack">
+
+    </div>
     
 </template>
 
@@ -19,7 +23,7 @@ export default {
     inject: ['rpgCurrentPlayer'],
     data() {
         return {
-            hp: 19,
+            hp: 90,
             maxHp: 90,
             gold: 0
         }
@@ -47,6 +51,19 @@ export default {
     background-size: contain;
     width: 100px;
     position: absolute;
+    text-align: center;
+    
+    margin-top: 10px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+}
+
+.backpack {
+    background-image: url(../images/backpack.png);
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    position: relative;
     text-align: center;
     
     margin-top: 10px;

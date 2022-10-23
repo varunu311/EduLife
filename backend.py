@@ -31,7 +31,7 @@ def login_validation(username, password):
 
     if c_pass == password:
         print("Login Succesful:")
-        print("Username:",username, "Password:",password)
+        print("Username:",username, "Password:", "********")
         return True
     else:
         print("Username and Password did not match")
@@ -53,12 +53,14 @@ def get_bal(username):
 
 def add_bal(username,amount_increase):
     set_bal(username, (get_bal(username)+amount_increase))
+    print("Accessed CockroachDB!")
     print("Updated Balance: ", get_bal(username))
 
 def subtract_bal(username,amount_decrease):
     set_bal(username, (get_bal(username)-amount_decrease))
+    print("Accessed CockroachDB!")
     print("Updated Balance: ", get_bal(username))
-    
+
 
 def get_loan(username):
     query = "SELECT loan FROM user_data where user_name=%s"
