@@ -23,15 +23,15 @@
   <object id="1" name="start" type="start" x="375.943" y="217.028">
    <point/>
   </object>
-  <object id="12" name="EV-1" x="290.284" y="371.638">
+  <object id="12" name="Lender" x="190.284" y="371.638">
 
    <point/>
   </object>
-  <object id="12" name="EV-2" x="350.284" y="371.638">
+  <object id="12" name="Savings" x="350.284" y="271.638">
   
    <point/>
   </object>
-  <object id="12" name="EV-3" x="400.284" y="371.638">
+  <object id="12" name="Bank Teller" x="500.284" y="471.638">
   
    <point/>
   </object>

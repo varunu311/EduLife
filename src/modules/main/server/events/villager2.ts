@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 const FormData = require('form-data');
 
 @EventData({
-    name: 'EV-2', 
+    name: 'Savings', 
     hitbox: {
         width: 32,
         height: 16
@@ -16,6 +16,10 @@ export class VillagerEvent2 extends RpgEvent {
     }
     async onAction(player: RpgPlayer) {
 
+        await player.showText('I will add your money to your savings!', {
+            talkWith: this
+        })
+
         const form = new FormData();
         form.append('username', "smirk")
         form.append('amount', '10')
@@ -25,6 +29,6 @@ export class VillagerEvent2 extends RpgEvent {
             body: form
           }); 
 
-        player.gold += 10
+        player.gold -= 10
     }
 } 

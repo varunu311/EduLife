@@ -1,13 +1,14 @@
 <template>
+    <div class="coin">
+            {{ gold }}
+
+</div>
     <div class="health-bar">
         <p>{{ hp }} / {{ maxHp }}</p>
         <div class="bar">
             <div class="inner-bar" :style="{ width }"></div>
         </div>
-        <div class="coin">
-            {{ gold }}
-
-</div>
+        
     </div>
     
 </template>
@@ -44,8 +45,9 @@ export default {
 .coin {
     background-image: url(../images/coin.png);
     background-size: contain;
-    width: 200px;
+    width: 100px;
     position: absolute;
+    text-align: center;
     
     margin-top: 10px;
     margin-right: 10px;

@@ -26,6 +26,8 @@ export const player: RpgPlayerHooks = {
         
         player.setVariable('AFTER_INTRO', true)
         
+        player.name = player.getVariable('USER')
+        
 
         player.gui('hud').open()
         
