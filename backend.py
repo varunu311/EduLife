@@ -1,13 +1,13 @@
 import os
 import psycopg2
 
-DATABASE_URL = "postgresql://varun:YnuXd42MRoYfwSA2tSDnRg@free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/EduLife?sslmode=verify-full&options=--cluster%3Dwood-bee-6064"
+DATABASE_URL = "postgresql://varun:EKoZ-DySh65JeT4ND_Qa-A@free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/EduLife?sslmode=verify-full&options=--cluster%3Dwood-bee-6064"
 conn = psycopg2.connect(DATABASE_URL)
 cur = conn.cursor()
 
 def create_user_table():
     try:
-        query = "CREATE TABLE IF NOT EXISTS user_data (user_name STRING, name STRING, password STRING, balance INT, credit_score INT, health INT, inventory STRING, job STRING);"
+        query = "CREATE TABLE IF NOT EXISTS user_data (user_name STRING, name STRING, password STRING, balance INT, loan INT, credit_score INT, health INT, job STRING);"
         cur.execute(query)
         conn.commit()
     except (Exception) as error:
@@ -18,7 +18,7 @@ def drop_table():
     conn.commit()
 
 def create_user(username,name,password):
-    query =  "INSERT INTO user_data (user_name,name,password, balance, credit_score, health, inventory, job) VALUES (%s, %s, %s, 10000, 690, 100, null, null)"
+    query =  "INSERT INTO user_data (user_name,name,password, balance, loan, credit_score, health, job) VALUES (%s, %s, %s, 10000, 0, 690, 100, null)"
     val = (username,name,password)
     cur.execute(query,val)
     conn.commit()
@@ -57,12 +57,36 @@ def add_bal(username,amount_increase):
 def subtract_bal(username,amount_decrease):
     set_bal(username, (get_bal(username)-amount_decrease))
 
+def get_loan(username):
+    query = "SELECT loan FROM user_data where user_name=%s"
+    cur.execute(query, (username,))
+    loan = cur.fetchone()
+    loan = int(''.join(str(loan)).replace("(", "").replace(")", "").replace(",", ""))
+    return loan
 
-create_user_table()
-create_user("Varunu311", "Varun Upadhyay", "password101")
-login_validation("Varunu311","password101")
-print("Current Bal:",get_bal("Varunu311"))
-add_bal("Varunu311", 25000)
-print("Updated Bal:",get_bal("Varunu311"))
-subtract_bal("Varunu311", 30000)
-print("Updated Bal:",get_bal("Varunu311"))
+def set_loan(username, amount):
+    query = "UPDATE user_data SET loan = %s WHERE user_name = %s"
+    val = (amount, username)
+    cur.execute(query, val)
+    conn.commit()
+
+def add_loan(username, amount_increase):
+    set_bal(username, (get_bal(username) + amount_increase))
+
+def subtract_loan(username, amount_decrease):
+    set_bal(username, (get_bal(username) - amount_decrease))
+
+
+
+
+#create_user_table()
+#create_user("Varunu311", "Varun Upadhyay", "password101")
+#create_user("Sal007", "Salvatore", "password202")
+#create_user("Forty-Irvine", "Irvine", "password303")
+#create_user("Smirki", "Manav", "password404")
+#login_validation("Varunu311","password101")
+#print("Current Bal:",get_bal("Varunu311"))
+#add_bal("Varunu311", 25000)
+#print("Updated Bal:",get_bal("Varunu311"))
+#subtract_bal("Varunu311", 24000)
+#print("Updated Bal:",get_bal("Varunu311"))
