@@ -17,12 +17,14 @@ export class VillagerEvent2 extends RpgEvent {
     async onAction(player: RpgPlayer) {
 
         const form = new FormData();
-        form.append('username', "smirk");
+        form.append('username', "smirk")
+        form.append('amount', '10')
         
-        const response = await fetch('https://webhook.site/01d3bf18-ee12-44dc-ba16-53de2b3a11bc/get')
-        const data = await response.json()
+        const resp = await fetch("http://127.0.0.1:5000/addmoney", {
+            method: 'POST',
+            body: form
+          }); 
 
-        console.log(data)
-        player.gold += 100
+        player.gold += 10
     }
 } 

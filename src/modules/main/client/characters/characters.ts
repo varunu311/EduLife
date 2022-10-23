@@ -6,6 +6,7 @@ const { RMSpritesheet } = Presets
     images: {
         female132: require('./assets/Female 13-2.png'),
         male012: require('./assets/Male 01-2.png'),
+        hudsun: require('./assets/BlondeMCTransparent.png'),
     },
     width: 96,
     height: 128,

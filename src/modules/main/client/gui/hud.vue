@@ -5,7 +5,7 @@
             <div class="inner-bar" :style="{ width }"></div>
         </div>
         <div class="coin">
-            dsfdfs
+            {{ gold }}
 
 </div>
     </div>
@@ -15,14 +15,21 @@
 <script>
 export default {
     name: 'hud',
+    inject: ['rpgCurrentPlayer'],
     data() {
         return {
             hp: 19,
-            maxHp: 90
+            maxHp: 90,
+            gold: 0
         }
     },
     mounted() {
-       // We listen to the change in HP
+        this.obsCurrentPlayer = this.rpgCurrentPlayer
+            .subscribe(({ object }) => {
+                this.gold = object.gold
+            })
+
+
     },
     computed: {
         width() {
@@ -38,9 +45,11 @@ export default {
     background-image: url(../images/coin.png);
     background-size: contain;
     width: 200px;
-    position: relative;
+    position: absolute;
+    
     margin-top: 10px;
-    margin-left: 10px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
 }
 
 .health-bar {

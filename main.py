@@ -17,7 +17,7 @@ def Sign_In():
         username = request.form["username"]
         password = request.form["password"]
         if backend.login_validation(username, password) == True:
-            return redirect("http://localhost/3000")
+            return redirect("http://127.0.0.1:3000/index.html")
 
         else:
             return "Login Failed: Password And Username Do Not Match"
@@ -43,9 +43,10 @@ def Sign_Up():
 def addmoney():
     if request.method == "POST":
         username = request.form["username"]
-        amount = request.form["amount"]
+        amount = int(request.form["amount"])
         backend.add_bal(username, amount)
         print(amount,"Added to Balance")
+        return "Money Added!"
     else:
         print("Not A Post Request")
         return "Not A Post Request"
