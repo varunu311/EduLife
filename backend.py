@@ -76,6 +76,38 @@ def add_loan(username, amount_increase):
 def subtract_loan(username, amount_decrease):
     set_bal(username, (get_bal(username) - amount_decrease))
 
+def add_job(username):
+    query = "UPDATE user_data SET job = %s WHERE user_name = %s"
+    job = "yes"
+    val = (job, username)
+    cur.execute(query, val)
+    conn.commit()
+
+def remove_job(username):
+    query = "UPDATE user_data SET job = %s WHERE user_name = %s"
+    job = "no"
+    val = (job, username)
+    cur.execute(query, val)
+    conn.commit()
+
+def get_creditscore(username):
+    query = "SELECT credit_score FROM user_data where user_name=%s"
+    cur.execute(query, (username,))
+    cscore = cur.fetchone()
+    cscore = int(''.join(str(cscore)).replace("(", "").replace(")", "").replace(",", ""))
+    return cscore
+
+def set_creditscore(username, amount):
+    query = "UPDATE user_data SET credit_score = %s WHERE user_name = %s"
+    val = (amount, username)
+    cur.execute(query, val)
+    conn.commit()
+
+def add_creditscore(username, amount_increase):
+    set_creditscore(username, (get_creditscore(username) + amount_increase))
+
+def subtract_creditscore(username, amount_decrease):
+    set_creditscore(username, (get_creditscore(username) - amount_decrease))
 
 
 
