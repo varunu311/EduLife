@@ -8,6 +8,14 @@
 </head>
 
 <body>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+  const parameters = new URLSearchParams(window.location.search);
+  const payment = parameters.get('username');
+  console.log(payment);
+  event.preventDefault();
+});
+    </script>
     <div id="rpg"></div>
     
     <style>
