@@ -4,7 +4,12 @@
         <div class="bar">
             <div class="inner-bar" :style="{ width }"></div>
         </div>
+        <div class="coin">
+            dsfdfs
+
+</div>
     </div>
+    
 </template>
 
 <script>
@@ -28,11 +33,22 @@ export default {
 </script>
 
 <style>
+
+.coin {
+    background-image: url(../images/coin.png);
+    background-size: contain;
+    width: 200px;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
 .health-bar {
     width: 200px;
     margin-top: 10px;
     margin-left: 10px;
-    background: rgba(0, 0, 0, 0.3)
+    
+
 }
 
 .health-bar p {
