@@ -17,7 +17,7 @@ def Sign_In():
         username = request.form["username"]
         password = request.form["password"]
         if backend.login_validation(username, password) == True:
-            return redirect(render_template("index.html"))
+            return redirect("3000/index.htm?user=",username)
 
         else:
             return "Login Failed: Password And Username Do Not Match"
