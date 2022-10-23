@@ -12,6 +12,7 @@ export const player: RpgPlayerHooks = {
         }
     },
     async onJoinMap(player: RpgPlayer) {
+        
         if (player.getVariable('AFTER_INTRO')) {
             return
         }
@@ -21,5 +22,8 @@ export const player: RpgPlayerHooks = {
         await player.showText('3. The global configuration is done in src/config')
         await player.showText('And, please, support the project on github https://github.com/RSamaium/RPG-JS ! :)')
         player.setVariable('AFTER_INTRO', true)
+
+        player.gui('hud').open()
+        
     }
 }
