@@ -1,6 +1,4 @@
-import { RpgEvent, EventData, RpgPlayer} from '@rpgjs/server'
-import defaultGui from '@rpgjs/default-gui' 
-import fetch from 'node-fetch';
+import { RpgEvent, EventData, RpgPlayer } from '@rpgjs/server'
 
 @EventData({
     name: 'EV-2', 
@@ -14,11 +12,7 @@ export class VillagerEvent2 extends RpgEvent {
         this.setGraphic('female132')
     }
     async onAction(player: RpgPlayer) {
-        
-        const response = await fetch('https://webhook.site/01d3bf18-ee12-44dc-ba16-53de2b3a11bc/get')
-        const data = await response.json()
-
-        console.log(data)
+        await player.changeMap("simplemap3", {x: 200, y: 200})
         player.gold += 100
     }
 } 

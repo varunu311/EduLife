@@ -24,6 +24,11 @@
    <point/>
   </object>
   <object id="12" name="EV-1" x="290.284" y="371.638">
+
+   <point/>
+  </object>
+  <object id="12" name="EV-2" x="350.284" y="371.638">
+  
    <point/>
   </object>
  </objectgroup>
